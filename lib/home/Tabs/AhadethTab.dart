@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:islami_1/home/Hadeth.dart';
+import 'package:islami_1/home/ahadeth_details/ahadeth_details_screen.dart';
 
 class AhadethTab extends StatefulWidget {
 
@@ -29,23 +30,27 @@ class _AhadethTabState extends State<AhadethTab> {
         Expanded(
           flex: 2,
           child: ListView.separated(
-              itemBuilder: (context, index) => Text(ahadethList[index].title,
-              style: TextStyle(
-                fontSize: 25,
-                fontWeight: FontWeight.w400,
-              ),
-              textAlign: TextAlign.center,
+              itemBuilder: (context, index) => InkWell(
+                onTap: (){
+                  Navigator.of(context).pushNamed(AhadethDetailsScreen.routeName,arguments: ahadethList[index]);
+                },
+                child: Text(ahadethList[index].title,
+                style: TextStyle(
+                  fontSize: 25,
+                  fontWeight: FontWeight.w400,
+                ),
+                textAlign: TextAlign.center,
+                ),
               ),
               separatorBuilder: (context, index) => SizedBox(height: 10,),
               itemCount: ahadethList.length
           ),
         ),
-
       ],
     );
   }
 
-  List<Hadeht> ahadethList =[];
+  List<Hadeth> ahadethList =[];
 
   loadFile()async{
    String fileContent = await rootBundle.loadString("assets/files/ahadeth.txt");
@@ -55,7 +60,7 @@ class _AhadethTabState extends State<AhadethTab> {
      String hadethTitle =hadethLines[0];
      hadethLines.removeAt(0);
       String hadethContent=  hadethLines.join(" ");
-      ahadethList .add(Hadeht(hadethTitle, hadethContent));
+      ahadethList .add(Hadeth(hadethTitle, hadethContent));
 
    }
    setState(() {

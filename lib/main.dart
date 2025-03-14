@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:islami_1/home/ahadeth_details/ahadeth_details_screen.dart';
 import 'package:islami_1/home/home_screen.dart';
 import 'package:islami_1/home/quran_details/quran_details.dart';
 
@@ -14,7 +15,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: ThemeData(
+      theme: ThemeData( 
         cardTheme: CardTheme(
           surfaceTintColor: Colors.white,
           color: Colors.white,
@@ -69,6 +70,7 @@ class MyApp extends StatelessWidget {
       routes: {
         HomeScreen.routeName: (_) => HomeScreen(),
         QuranDetails.routeName :(_)=> QuranDetails(),
+        AhadethDetailsScreen.routeName :(_)=> AhadethDetailsScreen(),
       },
     );
   }

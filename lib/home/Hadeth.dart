@@ -1,5 +1,5 @@
-class Hadeht {
+class Hadeth {
   String title;
   String content ;
-  Hadeht(this.title,this.content);
+  Hadeth(this.title,this.content);
 }
